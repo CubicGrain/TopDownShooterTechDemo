@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgae0dpnjkhao"]
+
+[ext_resource type="Script" uid="uid://bnk4gdc05rmw7" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://bhh65tp00hynf" path="res://Sprites/Player.png" id="2_6t5aa"]
+[ext_resource type="Script" uid="uid://c7sqrctf4e0ok" path="res://Scripts/shooter.gd" id="3_6t5aa"]
+[ext_resource type="Resource" uid="uid://dqjgxqkpxncoc" path="res://Weapons/Projectiles/basic_projectile.tres" id="4_fkybt"]
+[ext_resource type="Resource" uid="uid://bb0lr258hjoko" path="res://Data/group_names.tres" id="5_x3wgy"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_cvnsp")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(4, -16, 12, -11, 16, -4, 16, 4, 11, 12, 4, 16, -4, 16, -11, 12, -16, 4, -16, -4, -11, -12, -4, -16)
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionPolygon2D"]
+texture = ExtResource("2_6t5aa")
+
+[node name="Shooter" type="Node2D" parent="."]
+position = Vector2(27, 0)
+script = ExtResource("3_6t5aa")
+fireable = ExtResource("4_fkybt")
+group_names = ExtResource("5_x3wgy")

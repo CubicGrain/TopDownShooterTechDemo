@@ -1,8 +1,7 @@
-[gd_scene load_steps=53 format=4 uid="uid://bxytnapabuoao"]
+[gd_scene load_steps=52 format=4 uid="uid://bxytnapabuoao"]
 
-[ext_resource type="Texture2D" uid="uid://ch6t4d56lpm5x" path="res://GroundTilesheet.png" id="1_jjgbg"]
-[ext_resource type="Script" uid="uid://bnk4gdc05rmw7" path="res://Scenes/player.gd" id="2_8gbba"]
-[ext_resource type="Texture2D" uid="uid://bhh65tp00hynf" path="res://Player.png" id="2_bo1nx"]
+[ext_resource type="Texture2D" uid="uid://ch6t4d56lpm5x" path="res://Sprites/TileSheets/GroundTilesheet.png" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://cgae0dpnjkhao" path="res://Scenes/player.tscn" id="2_bo1nx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jjgbg"]
 
@@ -681,6 +680,10 @@ texture_region_size = Vector2i(32, 32)
 2:6/0/terrains_peering_bit/left_side = 0
 2:6/0/terrains_peering_bit/top_side = 0
 2:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_gt3je")
+3:6/0 = 0
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.496357, -11.719018, 2.4963608, -11.649674, 8.529228, -8.459883, 11.441647, -2.5657024, 11.58033, 2.635046, 8.529228, 8.459881, 2.4270172, 11.441643, -2.7043877, 11.441643, -8.737255, 8.529224, -11.649673, 2.2883282, -11.58033, -2.5657024, -8.390539, -8.598569)
+4:6/0 = 0
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.547329, -6.647787, 1.3180962, -6.5331697, 4.5273743, -4.5273724, 6.4758644, -1.6046371, 6.590481, 1.4900227, 4.5273743, 4.5273743, 1.4900208, 6.4758625, -1.547329, 6.4758625, -4.699297, 4.5273743, -6.7050953, 1.3180962, -6.5331707, -1.6046371, -4.5273724, -4.699298)
 
 [sub_resource type="TileSet" id="TileSet_8gbba"]
 tile_size = Vector2i(32, 32)
@@ -710,12 +713,7 @@ shape = SubResource("RectangleShape2D_jjvhh")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("2_bo1nx")]
 position = Vector2(182, 421)
-script = ExtResource("2_8gbba")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
-polygon = PackedVector2Array(4, -16, 12, -11, 16, -4, 16, 4, 11, 12, 4, 16, -4, 16, -11, 12, -16, 4, -16, -4, -11, -12, -4, -16)
-
-[node name="Sprite2D" type="Sprite2D" parent="Player/CollisionPolygon2D"]
-texture = ExtResource("2_bo1nx")
+[node name="Projectiles" type="Node2D" parent="." groups=["projectiles_parent"]]

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="GroupNames" load_steps=2 format=3 uid="uid://bb0lr258hjoko"]
+
+[ext_resource type="Script" uid="uid://c0bn6asnvp132" path="res://Data/group_names.gd" id="1_lmjyv"]
+
+[resource]
+script = ExtResource("1_lmjyv")
+metadata/_custom_type_script = "uid://c0bn6asnvp132"
