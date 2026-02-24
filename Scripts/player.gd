@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 
@@ -5,24 +6,20 @@ extends CharacterBody2D
 @export var friction = 50.0
 @export var acceleration = 30.0
 
+@export var direction : Vector2
+
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	#if not is_on_floor():
-	#	velocity += get_gravity() * delta
-
-	# Handle jump.
-	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-	#	velocity.y = jump_velocity
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions
 	
-	var direction := Input.get_vector("move_left","move_right","move_up","move_down")
+	
+	
+	player_movement(delta)
+
+	move_and_slide()
+
+func player_movement(delta: float):
+	# Get the input direction and handle the movement/deceleration.
 	var movement := direction.normalized()
 	
 	var lerp_weight = delta * (acceleration if movement else friction)
 	velocity = lerp(velocity, movement * max_speed, lerp_weight)
 	
-	
-
-	move_and_slide()

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Fireable" load_steps=6 format=3 uid="uid://dqjgxqkpxncoc"]
+
+[ext_resource type="Texture2D" uid="uid://ch6t4d56lpm5x" path="res://Sprites/TileSheets/GroundTilesheet.png" id="1_pu4p0"]
+[ext_resource type="PackedScene" uid="uid://sy48fmux706c" path="res://Weapons/Projectiles/BasicProjectle/BasicProjectile.tscn" id="2_kfqot"]
+[ext_resource type="Script" uid="uid://b7rjue22d3jss" path="res://Scripts/fireable.gd" id="3_3ranc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77x2h"]
+atlas = ExtResource("1_pu4p0")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc8c5"]
+atlas = SubResource("AtlasTexture_77x2h")
+region = Rect2(137, 201, 14, 14)
+
+[resource]
+script = ExtResource("3_3ranc")
+display_name = &"Basic"
+icon = SubResource("AtlasTexture_xc8c5")
+scene = ExtResource("2_kfqot")
+metadata/_custom_type_script = "uid://b7rjue22d3jss"

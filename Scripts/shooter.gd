@@ -6,22 +6,30 @@ extends Node2D
 @export var fireable : Fireable
 @export var group_names : GroupNames
 
-var projectiles_node : Node
+@export var default_diretion = Vector2.RIGHT
+
+var projectiles_parent : Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	projectiles_node = get_tree().get_first_node_in_group(group_names.projectiles_parent_group)
-	assert(projectiles_node != null, "Projectiles node is required for tjis script to work.")
+	projectiles_parent = get_tree().get_first_node_in_group(group_names.projectiles_parent_group)
+	assert(projectiles_parent != null, "Projectiles node is required for tjis script to work.")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
-func tryShoot() -> bool:
+func try_shoot() -> bool:
 	_shoot()
 	return true
 
 func _shoot():
 	var projectile = fireable.scene.instantiate() as Projectile
-	projectile.add_child(projectiles_node)
+	projectiles_parent.add_child(projectile)
+	projectile.name = fireable.display_name
+	projectile.global_position = global_position
+	projectile.global_rotation = global_rotation
+	
+	var launch_direction = default_diretion.rotated(global_rotation)
+	projectile.launch(launch_direction)
