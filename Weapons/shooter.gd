@@ -1,5 +1,5 @@
 class_name Shooter
-extends Node2D
+extends RayCast2D
 
 ## Launches projectiles when TryShoot is called successfully
 
@@ -21,8 +21,13 @@ func _process(_delta: float) -> void:
 	pass
 
 func try_shoot() -> bool:
-	_shoot()
-	return true
+	if not is_colliding():
+		_shoot()
+		return true
+	
+	return false
+
+
 
 func _shoot():
 	var projectile = fireable.scene.instantiate() as Projectile

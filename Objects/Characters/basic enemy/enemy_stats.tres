@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://cra3rn5nj571y"]
+
+[ext_resource type="Script" uid="uid://bef4wj548jbrk" path="res://Objects/Characters/character_stats.gd" id="1_cuesj"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_cuesj")
+metadata/_custom_type_script = "uid://bef4wj548jbrk"

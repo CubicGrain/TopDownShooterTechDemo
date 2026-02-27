@@ -1,7 +1,29 @@
-[gd_scene load_steps=3 format=4 uid="uid://bxytnapabuoao"]
+[gd_scene load_steps=9 format=4 uid="uid://bxytnapabuoao"]
 
 [ext_resource type="TileSet" uid="uid://bpxxoxbyk35in" path="res://Sprites/TileSheets/Basic_Tile_set.tres" id="1_q12u6"]
-[ext_resource type="PackedScene" uid="uid://cgae0dpnjkhao" path="res://Scenes/player.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://cgae0dpnjkhao" path="res://Objects/Characters/Player/player.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://cfvlcokhi7mbq" path="res://Objects/Characters/basic enemy/enemy.tscn" id="3_joc8x"]
+[ext_resource type="Script" uid="uid://bef4wj548jbrk" path="res://Objects/Characters/character_stats.gd" id="4_jghel"]
+
+[sub_resource type="Resource" id="Resource_slnnj"]
+resource_local_to_scene = true
+script = ExtResource("4_jghel")
+metadata/_custom_type_script = "uid://bef4wj548jbrk"
+
+[sub_resource type="Resource" id="Resource_t3or0"]
+resource_local_to_scene = true
+script = ExtResource("4_jghel")
+metadata/_custom_type_script = "uid://bef4wj548jbrk"
+
+[sub_resource type="Resource" id="Resource_ysn8j"]
+resource_local_to_scene = true
+script = ExtResource("4_jghel")
+metadata/_custom_type_script = "uid://bef4wj548jbrk"
+
+[sub_resource type="Resource" id="Resource_6ll4n"]
+resource_local_to_scene = true
+script = ExtResource("4_jghel")
+metadata/_custom_type_script = "uid://bef4wj548jbrk"
 
 [node name="Level1" type="Node2D"]
 
@@ -11,3 +33,19 @@ tile_set = ExtResource("1_q12u6")
 
 [node name="Player" parent="." instance=ExtResource("2_bo1nx")]
 position = Vector2(256, 361)
+
+[node name="Enemy" parent="." instance=ExtResource("3_joc8x")]
+position = Vector2(875, 213)
+stats = SubResource("Resource_slnnj")
+
+[node name="Enemy2" parent="." instance=ExtResource("3_joc8x")]
+position = Vector2(836, 352)
+stats = SubResource("Resource_t3or0")
+
+[node name="Enemy3" parent="." instance=ExtResource("3_joc8x")]
+position = Vector2(600, 458)
+stats = SubResource("Resource_ysn8j")
+
+[node name="Enemy4" parent="." instance=ExtResource("3_joc8x")]
+position = Vector2(918, 446)
+stats = SubResource("Resource_6ll4n")

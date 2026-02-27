@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://sy48fmux706c"]
+
+[ext_resource type="Script" uid="uid://digqwdpg7wr0w" path="res://Weapons/Projectiles/projectile.gd" id="1_b4rc3"]
+[ext_resource type="SpriteFrames" uid="uid://xcdccsqt67xi" path="res://Weapons/Projectiles/Basic Projectle/basic_projectile_animation.tres" id="2_5mw63"]
+[ext_resource type="Script" uid="uid://cqcaas85a1sv" path="res://Weapons/hitbox_2d.gd" id="3_le6a1"]
+[ext_resource type="Resource" uid="uid://dprxu1ota0s2i" path="res://Weapons/Projectiles/Basic Projectle/weapon_stats_basic_projectile.tres" id="4_b4rc3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gs73s"]
+
+[node name="RigidBody2D" type="RigidBody2D" node_paths=PackedStringArray("hitbox")]
+collision_layer = 64
+gravity_scale = 0.0
+script = ExtResource("1_b4rc3")
+move_speed = 300.0
+hitbox = NodePath("Hitbox2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gs73s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("2_5mw63")
+
+[node name="Hitbox2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 33
+script = ExtResource("3_le6a1")
+weapon_stats = ExtResource("4_b4rc3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D"]
+shape = SubResource("CircleShape2D_gs73s")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

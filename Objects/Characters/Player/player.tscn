@@ -1,0 +1,65 @@
+[gd_scene load_steps=14 format=3 uid="uid://cgae0dpnjkhao"]
+
+[ext_resource type="Script" uid="uid://bnk4gdc05rmw7" path="res://Objects/Characters/Player/player.gd" id="1_w0wqu"]
+[ext_resource type="Texture2D" uid="uid://bhh65tp00hynf" path="res://Sprites/Player.png" id="2_v4hk4"]
+[ext_resource type="Script" uid="uid://bbxfxi2k1wiqw" path="res://Objects/Characters/Player/player_input.gd" id="3_y3vn2"]
+[ext_resource type="Script" uid="uid://bwqjubp48cg3h" path="res://Objects/Characters/Player/player_input_actions.gd" id="4_ffwe5"]
+[ext_resource type="Script" uid="uid://d0pepfqsjv2kh" path="res://Objects/Characters/hand_anchor.gd" id="5_sh51x"]
+[ext_resource type="Script" uid="uid://c7sqrctf4e0ok" path="res://Weapons/shooter.gd" id="6_gpgf7"]
+[ext_resource type="Resource" uid="uid://dqjgxqkpxncoc" path="res://Weapons/Projectiles/Basic Projectle/basic_projectile.tres" id="7_xfjdf"]
+[ext_resource type="Resource" uid="uid://bb0lr258hjoko" path="res://Data/group_names.tres" id="8_mri7a"]
+[ext_resource type="Texture2D" uid="uid://ch6t4d56lpm5x" path="res://Sprites/TileSheets/GroundTilesheet.png" id="9_7dsgy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f1ek2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v4hk4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w0wqu"]
+radius = 16.0
+
+[sub_resource type="Resource" id="Resource_8erm5"]
+script = ExtResource("4_ffwe5")
+metadata/_custom_type_script = "uid://bwqjubp48cg3h"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx1dd"]
+atlas = ExtResource("9_7dsgy")
+region = Rect2(137, 201, 14, 14)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_w0wqu")
+
+[node name="Facing" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Facing"]
+sprite_frames = SubResource("SpriteFrames_f1ek2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_w0wqu")
+
+[node name="PlayerInput" type="Node" parent="." node_paths=PackedStringArray("player", "shooter")]
+script = ExtResource("3_y3vn2")
+player = NodePath("..")
+shooter = NodePath("../HandAnchor/Shooter")
+actions = SubResource("Resource_8erm5")
+
+[node name="HandAnchor" type="Node2D" parent="."]
+script = ExtResource("5_sh51x")
+
+[node name="Shooter" type="RayCast2D" parent="HandAnchor"]
+position = Vector2(30, 0)
+target_position = Vector2(0, 0)
+hit_from_inside = true
+script = ExtResource("6_gpgf7")
+fireable = ExtResource("7_xfjdf")
+group_names = ExtResource("8_mri7a")
+
+[node name="Sprite2D" type="Sprite2D" parent="HandAnchor/Shooter"]
+texture = SubResource("AtlasTexture_tx1dd")

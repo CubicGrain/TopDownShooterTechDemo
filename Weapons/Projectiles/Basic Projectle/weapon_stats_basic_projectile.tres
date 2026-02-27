@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://dprxu1ota0s2i"]
+
+[ext_resource type="Script" uid="uid://c6lqacjkjkp5j" path="res://Weapons/weapon_stats.gd" id="1_bxv4v"]
+
+[resource]
+resource_name = "BasicProjectileStats"
+script = ExtResource("1_bxv4v")
+damage = 20.0
+metadata/_custom_type_script = "uid://c6lqacjkjkp5j"
