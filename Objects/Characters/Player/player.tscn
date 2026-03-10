@@ -63,3 +63,9 @@ group_names = ExtResource("8_mri7a")
 
 [node name="Sprite2D" type="Sprite2D" parent="HandAnchor/Shooter"]
 texture = SubResource("AtlasTexture_tx1dd")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="HandAnchor/Shooter"]
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
